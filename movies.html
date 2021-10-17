@@ -1,73 +1,181 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://bootswatch.com/5/slate/bootstrap.min.css" rel="stylesheet">
-    <title>Moviedatabase</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Moviedatabase</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-      
-          <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link " href="index.html">Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="movies.html">Movies</a>
-                <span class="visually-hidden">(current)</span>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <div class="container">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootswatch Theme -->
+  <link href="https://bootswatch.com/5/slate/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+    crossorigin="anonymous"></script>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <title>Moviedatabase</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Moviedatabase</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+        aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="movies.html">Movies</a>
+            <span class="visually-hidden">(current)</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+        </ul>
       </div>
-      
+    </div>
+  </nav>
+  <div class="container">
+    <div class="table-responsive" id="movie_table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Release</th>
+            <th scope="col">Length</th>
+            <th scope="col">Regisseur</th>
+            <th scope="col">Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Avengers</td>
+            <td>19.12.2001</td>
+            <td>12</td>
+            <td>12</td>
+            <td>5/5</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>@fat</td>
+            <td>5/5</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="1">Larry the Bird</td>
+            <td>@twitter</td>
+            <td>@twitter</td>
+            <td>@twitter</td>
+            <td>5/5</td>
+          </tr>
+        </tbody>
+      </table>
+      <input type="text" id="movie_title" placeholder="Movie Title" >
+      <input type="date" id="movie_date" placeholder="Release Date">
+      <input type="number" id="movie_length" placeholder="Length (Minutes)">
+      <input type="text" id="movie_regisseur" placeholder="Regisseur">
+      <input type="number" id="movie_rating" placeholder="Rating" max="5">
+      <button type="button" class="btn btn-success add_movie" id="submit_button">Add Movie Title</button>
+      <button type="button" class="btn btn-danger add_movie" id="clear_input">Clear Form</button>
+    </div>
 
-    <div></div>
 
-  </body>
+
+
+    <script>
+      // Validate Form Content
+      $('#submit_button').click(function(){
+        var movieTitle = $('#movie_title').val();
+        var movieDate = $('#movie_date').val();
+        var movieLength = $('#movie_length').val();
+        var movieRegisseur = $('#movie_regisseur').val();
+        var movieRating = $('#movie_rating').val();
+        
+
+        $('#movie_table > table > tbody > tr > td').each(function () {
+          if($(this).html()==movieTitle){
+            $('#movie_title').css('color','#FF0000');
+          }else{
+            $('#movie_title').css('color','default');
+          }
+        });
+        
+
+        if(movieRating > 5 || movieRating < 0){
+          $('#movie_rating').css('color','#FF0000');
+        }
+
+        console.log(movieTitle);
+        $('#movie_table > table > tbody').append('<tr><th scope="row">X</th><td colspan="1">'+movieTitle+'</td><td>'+movieDate+'</td><td>'+movieLength+' Minutes</td><td>'+movieRegisseur+'</td><td>'+movieRating+'/5</td></tr>');
+        // alert('TEST');
+        
+        // $('#movie_table > table').css('background-color','default');
+        var counter = 1;
+        $('#movie_table > table > tbody > tr > th').each(function () {
+                $(this).html(counter);
+                counter++;
+            });
+      });
+  
+    
+
+      $(body).on('click','button.submit_button',function(){
+        $(document).css('background-color','#FFFF00');
+        // $('#movie_table > tbody > tr > th').css('background-color','#FF0000');
+        alert('TEST');
+      });
+    </script>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Launch demo modal
+    </button>
+
+
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script>
+    $('.movie_table').on('click', 'button.alert_button', function () {
+      alert('TEST');
+      console.log('SEEES');
+    });
+  </script>
+</body>
+
 </html>
