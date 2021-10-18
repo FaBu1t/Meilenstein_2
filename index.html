@@ -42,9 +42,9 @@
    
     <div class="container">
       
-      <div class="row">
+      <div class="row"></div>
         
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div id="movie_carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img class="d-block w-100" src="https://collider.com/wp-content/uploads/avengers-character-poster-banner.jpeg" alt="First slide">
@@ -56,11 +56,11 @@
             <img class="d-block w-100" src="https://fyre.cdn.sewest.net/maple/60b2344cb04bd5001219697d/article_small-sUznFGcl_.jpeg?width=750&quality=80" alt="Third slide">
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <a id="prevButton" class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span id="prev" class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <a id="nextButton" class="carousel-control-next" href="#carousel" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span id="next" class="sr-only">Next</span>
         </a>
@@ -79,12 +79,14 @@
     </figure>
 
     <script>
-      $(body).on('click','button.button_test',function(){
-        this.alert('SNANS');
+      $('#prevButton').click(function() {
+      $('#movie_carousel').carousel('prev');
+      
       });
 
-      $(body).on('click',function(){
-        console.log('SES');
+      $('#nextButton').click(function() {
+      $('#movie_carousel').carousel('next');
+      
       });
     </script>
 
