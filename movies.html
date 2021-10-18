@@ -63,25 +63,25 @@
             <th scope="row">1</th>
             <td>Avengers</td>
             <td>19.12.2001</td>
-            <td>12</td>
-            <td>12</td>
+            <td>164 Minutes</td>
+            <td>Peter Elcron</td>
             <td>5/5</td>
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@fat</td>
+            <td>Dune</td>
+            <td>16.09.20201</td>
+            <td>155 Minutes</td>
+            <td>Sasha Elvixcz</td>
             <td>5/5</td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td colspan="1">Larry the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>5/5</td>
+            <td colspan="1">Jupiter Ascending</td>
+            <td>09.11.2015</td>
+            <td>Zu Lang</td>
+            <td>Schlechter Film</td>
+            <td>2/5</td>
           </tr>
         </tbody>
       </table>
@@ -108,16 +108,47 @@
         
 
         $('#movie_table > table > tbody > tr > td').each(function () {
-          if($(this).html()==movieTitle){
+          if($(this).html() == movieTitle){
             $('#movie_title').css('color','#FF0000');
           }else{
-            $('#movie_title').css('color','default');
+            $('#movie_title').css('color','#000000');
           }
         });
-        
 
-        if(movieRating > 5 || movieRating < 0){
+        if(!movieTitle){
+          movieTitle = '-----'
+        }
+
+        if(!movieDate){
+          var d = new Date;
+          var year = d.getFullYear();
+          var month = d.getMonth()+1;
+          var day = d.getDate();
+          movieDate =  day+'.'+month+'.'+year
+          
+        }
+        
+        if(!movieLength || movieLength < 0){
+          movieLength = 120;
+        }
+
+    
+        if(movieRating > 5 ){
           $('#movie_rating').css('color','#FF0000');
+          movieRating = 5;
+        } else if(movieRating < 0){
+          $('#movie_rating').css('color','#FF0000');
+          movieRating = 1;
+        } else {
+          $('#movie_rating').css('color','#000000');
+        }
+
+        if(!movieRating){
+          movieRating = 3;
+        }
+
+        if(!movieRegisseur){
+          movieRegisseur = 'Finn Reinhardt';
         }
 
         console.log(movieTitle);
@@ -132,7 +163,14 @@
             });
       });
   
-    
+      $('#clear_input').click(function(){
+        $('#movie_title').val('');
+        $('#movie_date').val('');
+        $('#movie_length').val('');
+        $('#movie_regisseur').val('');
+        $('#movie_rating').val('');
+        
+      });
 
       $(body).on('click','button.submit_button',function(){
         $(document).css('background-color','#FFFF00');
