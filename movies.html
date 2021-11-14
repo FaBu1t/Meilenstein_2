@@ -206,8 +206,12 @@
       <input type="number" id="movie_length" placeholder="Length (Minutes)">
       <input type="text" id="movie_regisseur" placeholder="Regisseur">
       <input type="number" id="movie_rating" placeholder="Rating" max="5">
-      <button type="button" class="btn btn-success add_movie" id="submit_button">Add Movie Title</button>
-      <button type="button" class="btn btn-danger add_movie" id="clear_input">Clear Form</button>
+
+      <div style="max-width: fit-content; float: inline-end;margin-top: 20px;">
+        <button type="button" class="btn btn-success add_movie" id="submit_button">Add Movie Title</button>
+        <button type="button" class="btn btn-danger add_movie" id="clear_input">Clear Form</button>
+        <button type="button" class="btn btn-warning add_movie" id="clear_localstorage">Clear localstorage</button>
+      </div>
     </div>
 
 
@@ -337,6 +341,12 @@
       $('#movie_regisseur').val('');
       $('#movie_rating').val('');
     });
+
+    $('#clear_localstorage').click(function () {
+      localStorage.clear();
+      window.location.reload();
+
+    })
 
     // Change colour of Table heads when clicking. No use in here, but a nice JQuery reference :>
     /*  $(body).on('click', 'button.submit_button', function () {
