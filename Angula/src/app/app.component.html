@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>{{title}}</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Release</th>
+        <th>Length</th>
+        <th>Regisseur</th>
+        <th>Rating</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies; let i = index;">
+        <td>{{movie.title}}</td>
+        <td>{{movie.release}}</td>
+        <td>{{movie.length}}</td>
+        <td>{{movie.regisseur}}</td>
+        <td>{{movie.rating}}</td>
+        <td><button class="btn btn-danger" (click)="edit(movie)">Edit</button>&nbsp;<button class="btn btn-danger" (click)="delete(movie)">Delete</button></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><input type="text" placeholder="Movie Title..." class="form-control" [(ngModel)]="movie.title"/></td>
+        <td><input type="text" placeholder="Release Date..." class="form-control" [(ngModel)]="movie.release"/></td>
+        <td><input type="text" placeholder="Length..." class="form-control" [(ngModel)]="movie.length"/></td>
+        <td><input type="text" placeholder="Regisseur..." class="form-control" [(ngModel)]="movie.regisseur"/></td>
+        <td><input type="text" placeholder="Rating..." class="form-control" [(ngModel)]="movie.rating"/></td>
+        <td><button class="btn btn-success" (click)="add()">Add</button></td>
+      </tr>
+    </tfoot>
+  </table>
+  
+  <button class="btn btn-success" (click)="change()">Change</button>
+</div>
