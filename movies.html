@@ -16,64 +16,95 @@
   <title>Moviedatabase</title>
 
   <script>
-     var movie_array = [];
-      
-     $(document).ready(function(){
-        
-        if(localStorage.getItem('movies')===null){
-          console.log('TEST');
-          var sampleMovie_1 = { 
-              'Title': 'Avengers', 
-              'Date': '19.12.2001', 
-              'Length': '164', 
-              'Regisseur' : 'Peter Elcron', 
-              'Rating' : '5'};
+    // Saves the movies to persist
+    var movie_array = [];
 
-          var sampleMovie_2 = { 
-          'Title': 'Avengers', 
-              'Date': '19.12.2001', 
-              'Length': '164', 
-              'Regisseur' : 'Nafran Elcron', 
-              'Rating' : '5'};
-          var tmp;
-          
-          var sampleMovie_3 = { 
-            'Title': 'Avengers', 
-              'Date': '19.12.2001', 
-              'Length': '164', 
-              'Regisseur' : 'Peter Elcron', 
-              'Rating' : '5'};
+    // Initially loading all persisted movies from the local storage or adding the sample movies if ls is empty
+    $(document).ready(function () {
 
-          var sampleMovie_4 = { 
-            'Title': 'Avengers', 
-              'Date': '19.12.2001', 
-              'Length': '164', 
-              'Regisseur' : 'Peter Elcron', 
-              'Rating' : '5'};
+      if (localStorage.getItem('movies') === null) {
+        console.log('TEST');
+        var sampleMovie_1 = {
+          'Title': 'Avengers',
+          'Date': '19.12.2001',
+          'Length': '164',
+          'Regisseur': 'Peter Elcron',
+          'Rating': '5'
+        };
 
-          var sampleMovie_5 = { 
-            'Title': 'Avengers', 
-              'Date': '19.12.2001', 
-              'Length': '164', 
-              'Regisseur' : 'Peter Elcron', 
-              'Rating' : '5'};
+        var sampleMovie_2 = {
+          'Title': 'Dune',
+          'Date': '16.09.20201',
+          'Length': '155',
+          'Regisseur': 'Sasha Elvixcz',
+          'Rating': '5'
+        };
 
-          movie_array.push(sampleMovie_1);
-          movie_array.push(sampleMovie_2);
-          movie_array.push(sampleMovie_3);
-          movie_array.push(sampleMovie_4);
-          movie_array.push(sampleMovie_5);
+        var sampleMovie_3 = {
+          'Title': 'Jupiter Ascendingengers',
+          'Date': '09.11.2015',
+          'Length': 'Zu Lang',
+          'Regisseur': 'Schlechter Film',
+          'Rating': '1'
+        };
 
-          localStorage.setItem('movies',JSON.stringify(movie_array));
-          
-        }else{
-          movie_array = JSON.parse(localStorage.getItem('movies'));
-          //TODO: Entferne hard coded stuff. 
-          // Lade jeden Film rein (loadMovie();)
-        
-        }
-  });
+        var sampleMovie_4 = {
+          'Title': 'Der Schatzplanet',
+          'Date': '05.03.2002',
+          'Length': '95',
+          'Regisseur': 'Jon Clements',
+          'Rating': '5'
+        };
 
+        var sampleMovie_5 = {
+          'Title': 'Pacific Rim',
+          'Date': '18.07.2021',
+          'Length': '131',
+          'Regisseur': 'Guillermo del Toro',
+          'Rating': '5'
+        };
+
+        movie_array.push(sampleMovie_1);
+        movie_array.push(sampleMovie_2);
+        movie_array.push(sampleMovie_3);
+        movie_array.push(sampleMovie_4);
+        movie_array.push(sampleMovie_5);
+
+        persistMovies();
+      } else {
+        movie_array = JSON.parse(localStorage.getItem('movies'));
+      }
+      loadMovies();
+      assignIndex();
+    });
+
+    function loadMovies() {
+      //Add every entry from the Movies Array to the table
+      var id = 1;
+      movie_array.forEach(function (s) {
+        $('#movie_table > table > tbody').append('<tr><th scope="row">X</th><td colspan="1">'
+          + s.Title + '</td><td>'
+          + s.Date + '</td><td>'
+          + s.Length + ' Minutes</td><td>'
+          + s.Regisseur + '</td><td>'
+          + s.Rating + '/5</td></tr>');
+        console.log(s.Regisseur);
+      })
+    };
+
+    // Alters the HTML of each row to display the correct Index
+    function assignIndex() {
+      var counter = 1;
+      $('#movie_table > table > tbody > tr > th').each(function () {
+        $(this).html(counter);
+        counter++;
+      });
+    }
+
+    // Saves current movies to local storage
+    function persistMovies() {
+      localStorage.setItem('movies', JSON.stringify(movie_array));
+    }
   </script>
 </head>
 
@@ -128,7 +159,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <!-- <tr>
             <th scope="row">1</th>
             <td>Avengers</td>
             <td>19.12.2001</td>
@@ -167,7 +198,7 @@
             <td>131 Minuten</td>
             <td>Guillermo del Toro</td>
             <td>5/5</td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
       <input type="text" id="movie_title" placeholder="Movie Title">
@@ -215,14 +246,10 @@
           </div>
         </div>
       </div>
-
     </div>
-
   </div>
-
-
   <script>
-   
+
     // Validate Form Content
     $('#submit_button').click(function () {
       var movieTitle = $('#movie_title').val();
@@ -239,8 +266,6 @@
           $('#movie_title').css('color', '#000000');
         }
       });
-
-      // Change
 
       if (!movieTitle) {
         movieTitle = '-----'
@@ -278,62 +303,47 @@
         movieRegisseur = 'Finn Reinhardt';
       }
 
-      console.log(movieTitle);
-      $('#movie_table > table > tbody').append('<tr><th scope="row">X</th><td colspan="1">' + movieTitle + '</td><td>' + movieDate + '</td><td>' + movieLength + ' Minutes</td><td>' + movieRegisseur + '</td><td>' + movieRating + '/5</td></tr>');
-      // alert('TEST');
+      var testObject = {
+        'Title': movieTitle,
+        'Date': movieDate,
+        'Length': movieLength,
+        'Regisseur': movieRegisseur,
+        'Rating': movieRating
+      };
 
-      // $('#movie_table > table').css('background-color','default');
-      var counter = 1;
-      $('#movie_table > table > tbody > tr > th').each(function () {
-        $(this).html(counter);
-        counter++;
-      });
+      addObject(testObject);
 
-      var testObject = { 
-        'Title': movieTitle, 
-        'Date': movieDate, 
-        'Length': movieLength, 
-        'Regisseur' : movieRegisseur, 
-        'Rating' : movieRating};
+      $('#movie_table > table > tbody').append('<tr><th scope="row">X</th><td colspan="1">'
+        + movieTitle + '</td><td>'
+        + movieDate + '</td><td>'
+        + movieLength + ' Minutes</td><td>'
+        + movieRegisseur + '</td><td>'
+        + movieRating + '/5</td></tr>');
 
-      console.log(testObject);
-      addObject(testObject, counter-1);
-      
+      assignIndex();
     });
 
+    // Adds an Object to the movie_array and persists it in localstorage
+    function addObject(movieObject) {
+      movie_array.push(movieObject);
+      persistMovies();
+    }
+
+    // Clears the Input of the Form by changing the Value of the form fields to ''
     $('#clear_input').click(function () {
+      $('#movie_title').val('');
       $('#movie_date').val('');
       $('#movie_length').val('');
       $('#movie_regisseur').val('');
       $('#movie_rating').val('');
-
     });
 
-    $(body).on('click', 'button.submit_button', function () {
-      $(document).css('background-color', '#FFFF00');
-      // $('#movie_table > tbody > tr > th').css('background-color','#FF0000');
-      alert('TEST');
-    });
-
-
-  function addObject(movieObject, counter){
-    
-
-
-    movie_array.push(movieObject);
-    //localStorage.setItem('movie_'+counter,movieObject);
-    localStorage.setItem('movies', JSON.stringify(movie_array));
-  }
-
-  
-  </script>
-
-
-  <script>
-    $('.movie_table').on('click', 'button.alert_button', function () {
-      alert('TEST');
-      console.log('SEEES');
-    });
+    // Change colour of Table heads when clicking. No use in here, but a nice JQuery reference :>
+    /*  $(body).on('click', 'button.submit_button', function () {
+       $(document).css('background-color', '#FFFF00');
+       $('#movie_table > tbody > tr > th').css('background-color','#FF0000');
+       alert('TEST');
+     }); */
   </script>
 </body>
 
