@@ -9,9 +9,6 @@ import { DataService } from './data.service';
 export class AppComponent {
   title = 'Moviedatabase';
 
-
-  
-  
   movie = {
     'title': '',
     'release': '',

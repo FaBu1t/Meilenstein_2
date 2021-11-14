@@ -32,21 +32,21 @@ export class DataService {
       'date': '09.11.2015',
       'length': 'Zu Lang',
       'regisseur': 'Schlechter Film',
-      'rating': '1'
+      'rating': '1/5'
     },
     {
       'title': 'Der Schatzplanet',
       'date': '05.03.2002',
       'length': '95',
       'regisseur': 'Jon Clements',
-      'rating': '5'
+      'rating': '5/5'
     },
     {
       'title': 'Pacific Rim',
       'date': '18.07.2021',
       'length': '131',
       'regisseur': 'Guillermo del Toro',
-      'rating': '5'
+      'rating': '5/5'
     }
   ]
 
@@ -115,5 +115,4 @@ export class DataService {
     localStorage.clear();
     location.reload();
   }
-
 }
