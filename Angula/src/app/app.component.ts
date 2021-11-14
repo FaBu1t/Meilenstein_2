@@ -9,6 +9,9 @@ import { DataService } from './data.service';
 export class AppComponent {
   title = 'Moviedatabase';
 
+
+  
+  
   movie = {
     'title': '',
     'release': '',
@@ -36,7 +39,7 @@ export class AppComponent {
 
   change()
   {
-   
+    this.dataService.change(this.movie);
   }
 
   add(movie)
@@ -46,8 +49,9 @@ export class AppComponent {
 
   edit(movie)
   {
+    this.dataService.edit(movie);
     this.movie = movie;
-
+    
   }
 
   delete(movie)

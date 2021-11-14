@@ -4,7 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
-
+  oldmovie={
+    'title': '',
+    'release': '',
+    'length': '',
+    'regisseur': '',
+    'rating': ''
+  };
 
   movieArray = [
     {
@@ -44,6 +50,8 @@ export class DataService {
     }
   ]
 
+  allowChange: boolean =false;
+
 
   constructor() { 
     if (localStorage.getItem('persons'))
@@ -74,9 +82,18 @@ export class DataService {
     return movie;
   }
 
+  change(movie){
+    if(this.allowChange){
+      this.delete(this.oldmovie);
+      this.add(movie);
+    }
+    this.allowChange=false;
+  }
+
   edit(movie)
   {
-
+    this.oldmovie=movie;
+    this.allowChange=true;
   }
 
 
